@@ -1,6 +1,13 @@
 module.exports = {
   plugins: {
-    tailwindcss: {},
+    tailwindcss: {
+      "files.associations": {
+        "*.css": "tailwindcss"
+      },
+      "editor.quickSuggestions": {
+        "strings": "on"
+      }
+    },
     autoprefixer: {},
   },
 }
