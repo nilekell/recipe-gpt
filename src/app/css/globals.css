@@ -25,3 +25,48 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.main {
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  padding: 16px;
+}
+
+.subtitle {
+  font-style: italic;
+}
+
+.instruction {
+  padding-top: 64px;
+}
+
+.form-section {
+  padding: 48px;
+}
+
+.input-field {
+  color: black;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+
+.add-button {
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  margin: 16px;
+}
+
+.submit-button {
+  border: 1px solid white;
+  color: white;
+  padding: 10px;
+  margin: 8px;
+}
