@@ -40,6 +40,9 @@ export default function IngredientsForm() {
         ingredients.forEach(ingredient => {
             console.log(`Ingredient: ${ingredient.ingredient}, Quantity: ${ingredient.quantity}`)
         })
+
+        fetch('/api/recipe', {method: 'POST', body: JSON.stringify(ingredients)})
+
     }
 
     return (
