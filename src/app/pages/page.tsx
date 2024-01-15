@@ -1,4 +1,4 @@
-import IngredientsForm from "./ingredients_form";
+import IngredientsForm from "../ingredients_form";
 
 export default function Home() {
   return (
