@@ -1,3 +1,5 @@
+'use client';
+import React, { useState } from "react";
 import IngredientsForm from "./components/ingredients_form";
 
 export default function Home() {

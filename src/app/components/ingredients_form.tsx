@@ -1,5 +1,6 @@
-'use client'
+'use client';
 import React, { useState } from "react";
+import Modal from "./modal";
 
 interface IngredientField {
     quantity: string;
@@ -9,7 +10,15 @@ interface IngredientField {
 export default function IngredientsForm() {
     const [ingredients, setIngredients] = useState<IngredientField[]>([
         { quantity: "", ingredient: "" },
+        // add more initial items in ingredients form
+        // { quantity: "", ingredient: "" },
+        // { quantity: "", ingredient: "" },
+        // { quantity: "", ingredient: "" },
+        // { quantity: "", ingredient: "" },
     ]);
+
+    const [show, setShowModal] = useState(false)
+    const [modalMessage, setModalMessage] = useState('');
 
     const handleAddField = () => {
         setIngredients([...ingredients, { quantity: "", ingredient: "" }]);
@@ -34,12 +43,23 @@ export default function IngredientsForm() {
         setIngredients(newIngredients);
     };
 
-    const handleSubmit = (
-    ) => {
-        console.log('Form submitted.')
-        ingredients.forEach(ingredient => {
+    const handleSubmit = () => {
+        for (const ingredient of ingredients) {
             console.log(`Ingredient: ${ingredient.ingredient}, Quantity: ${ingredient.quantity}`)
-        })
+            
+            if (!ingredient.ingredient || !ingredient.quantity) {
+                setModalMessage('Please enter your ingredients.')
+                setShowModal(true)
+                return;
+            }
+
+            if (!/\d/.test(ingredient.quantity)) {
+                setModalMessage(`Please enter an appropriate quantity for ${ingredient.ingredient}`)
+                setShowModal(true)
+                return;
+            }
+
+        }
 
         fetch('/api/recipe', {method: 'POST', body: JSON.stringify(ingredients)})
 
@@ -77,8 +97,10 @@ export default function IngredientsForm() {
                     Submit
                 </button>
             </div>
+            <div>
+                <Modal title="Warning" message={modalMessage} onClose={() => setShowModal(false)} show={show}/>
+            </div> 
         </form>
-
     );
 }
 
